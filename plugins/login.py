@@ -45,15 +45,15 @@ async def login(bot, message):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-						InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
+						InlineKeyboardButton("👨🏼‍💻Creator", url='https://t.me/xskull7'),
+						InlineKeyboardButton("🤖Bot lainnya", url="https://t.me/botdimasdoang")
 					],
                     [
-                        InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-						InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
+                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
+						InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
                     ],
                     [
-                        InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin")
+                        InlineKeyboardButton("👨🏼‍🦯Bagaimana caranya?", callback_data="help#subin")
 
                     ]
 					
@@ -63,7 +63,7 @@ async def login(bot, message):
         return
     username=USER
     if 1 in STATUS:
-        m=await bot.send_message(message.from_user.id, "Fetching details from Instagram")
+        m=await bot.send_message(message.from_user.id, "Mengambil detail dari Instagram")
         profile = Profile.own_profile(insta.context)
         mediacount = profile.mediacount
         name = profile.full_name
@@ -75,15 +75,15 @@ async def login(bot, message):
         await m.delete()
         await bot.send_photo(
             chat_id=message.from_user.id,
-            caption=f"You are already Logged In as {name}\n\n**Your Account Details**\n\n🏷 **Name**: {name}\n🔖 **Username**: {profile.username}\n📝 **Bio**: {bio}\n📍 **Account Type**: {acc_type(profile.is_private)}\n🏭 **Is Business Account?**: {yes_or_no(profile.is_business_account)}\n👥 **Total Followers**: {followers}\n👥 **Total Following**: {following}\n📸 **Total Posts**: {mediacount}\n📺 **IGTV Videos**: {igtvcount}",
+            caption=f"Anda sudah Masuk sebagai {name}\n\n**Detail Akun Anda**\n\n🏷 **Name**: {name}\n🔖 **Username**: {profile.username}\n📝 **Bio**: {bio}\n📍 **Account Type**: {acc_type(profile.is_private)}\n🏭 **Is Business Account?**: {yes_or_no(profile.is_business_account)}\n👥 **Total Followers**: {followers}\n👥 **Total Following**: {following}\n📸 **Total Posts**: {mediacount}\n📺 **IGTV Videos**: {igtvcount}",
             photo=profilepic
             )
         return
     while True:
         try:
-            password = await bot.ask(text = f"Helo {USER} Enter your Instagram Password to login into your account 🙈", chat_id = message.from_user.id, filters=filters.text, timeout=30)
+            password = await bot.ask(text = f"Helo {USER} Masukkan Kata Sandi Instagram Anda untuk masuk ke akun Anda 🙈", chat_id = message.from_user.id, filters=filters.text, timeout=30)
         except TimeoutError:
-            await bot.send_message(message.from_user.id, "Error!!\n\nRequest timed out.\nRestart by using /login")
+            await bot.send_message(message.from_user.id, "Error!!\n\nWaktu permintaan habis.\nMulai ulang dengan menggunakan /login")
             return
         passw=password.text
         break
@@ -94,7 +94,7 @@ async def login(bot, message):
             chat_id=message.from_user.id,
             document=f"./{username}",
             file_name=str(message.from_user.id),
-            caption="⚠️ KEEP THIS SESSION FILE SAFE AND DO NOT SHARE WITH ANYBODY"
+            caption="⚠️ TETAPKAN FILE SESI INI AMAN DAN JANGAN DIBAGIKAN DENGAN SIAPA PUN"
             )
         file_id=f.document.file_id
         await bot.send_message(message.from_user.id, f"Now go to [Heroku](https://dashboard.heroku.com/apps) and set Environment variable.\n\n\n**KEY**: <code>INSTA_SESSIONFILE_ID</code>\n\n**VALUE**: <code>{file_id}</code>\n\nIf you do not set this you may need to Login again When Heroku restarts.", disable_web_page_preview=True)
@@ -111,15 +111,15 @@ async def login(bot, message):
         await m.delete()
         await bot.send_photo(
             chat_id=message.from_user.id,
-            caption=f"🔓Succesfully Logged In as {name}\n\n**Your Account Details**\n\n🏷 **Name**: {name}\n🔖 **Username**: {profile.username}\n📝 **Bio**: {bio}\n📍 **Account Type**: {acc_type(profile.is_private)}\n🏭 **Is Business Account?**: {yes_or_no(profile.is_business_account)}\n👥 **Total Followers**: {followers}\n👥 **Total Following**: {following}\n📸 **Total Posts**: {mediacount}\n📺 **IGTV Videos**: {igtvcount}",
+            caption=f"🔓Berhasil Masuk sebagai {name}\n\n**Detail Akun Anda**\n\n🏷 **Name**: {name}\n🔖 **Username**: {profile.username}\n📝 **Bio**: {bio}\n📍 **Account Type**: {acc_type(profile.is_private)}\n🏭 **Is Business Account?**: {yes_or_no(profile.is_business_account)}\n👥 **Total Followers**: {followers}\n👥 **Total Following**: {following}\n📸 **Total Posts**: {mediacount}\n📺 **IGTV Videos**: {igtvcount}",
             photo=profilepic
             )
     except TwoFactorAuthRequiredException:
         while True:
             try:
-                code = await bot.ask(text = "Oh!!\nYour Instagram account has Two Factor Authentication enabled🔐\n\nAn OTP has been sent to your phone\nEnter the OTP", chat_id = message.from_user.id, filters=filters.text, timeout=30)
+                code = await bot.ask(text = "Oh!!\nAkun Instagram Anda mengaktifkan Otentikasi Dua Faktor🔐\n\nOTP telah dikirim ke ponsel Anda\nEnter the OTP", chat_id = message.from_user.id, filters=filters.text, timeout=30)
             except TimeoutError:
-                await bot.send_message(message.from_user.id, "Error!!\n\nRequest timed out.\nRestart by using /login")
+                await bot.send_message(message.from_user.id, "Error!!\n\nWaktu permintaan habis.\nMulai ulang dengan menggunakan /login")
                 return
             codei=code.text
             try:
@@ -162,7 +162,7 @@ async def login(bot, message):
             await bot.send_message(message.from_user.id, f"{e}\nTry /login again")
         print("Logged in")
     except Exception as e:
-        await bot.send_message(message.from_user.id, f"{e}\nTry again or Report this Issue to [Developer](tg://user?id=626664225)")
+        await bot.send_message(message.from_user.id, f"{e}\nCoba lagi atau Laporkan Masalah ini ke [Creator](tg://user?id=626664225)")
 
 @Client.on_message(filters.command("logout") & filters.private)
 async def logout(bot, message):
@@ -173,15 +173,15 @@ async def logout(bot, message):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-						InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
+						InlineKeyboardButton("👨🏼‍💻Creator", url='https://t.me/xskull7'),
+						InlineKeyboardButton("🤖Bot lainnya", url="https://t.me/botdimasdoang")
 					],
                     [
-                        InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-						InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
+                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
+						InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
                     ],
                     [
-                        InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin")
+                        InlineKeyboardButton("👨🏼‍🦯Bagaimana caranya?", callback_data="help#subin")
 
                     ]
 					
@@ -190,8 +190,8 @@ async def logout(bot, message):
 		)
         return
     if 1 in STATUS:
-        await message.reply_text("Succesfully Logged Out")
+        await message.reply_text("Berhasil Logout")
         STATUS.remove(1)
         os.remove(f"./{USER}")
     else:
-        await message.reply_text("You are not Logged in\nUse /login first")
+        await message.reply_text("Anda belum Masuk\n pakai /login terlebih dahulu")
