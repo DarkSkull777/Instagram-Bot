@@ -53,13 +53,13 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-					InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122"),
-                    InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
+					InlineKeyboardButton("👨🏼‍💻Creator", url='https://t.me/xskull7'),
+					InlineKeyboardButton("🤖Bot lain", url="https://t.me/botdimasdoang/5"),
+                    InlineKeyboardButton("⚙️Channel", url="https://t.me/botdimasdoang" )
 				],
 				[
-					InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-					InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
+					InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
+					InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
 				]
 			]
 			)
@@ -78,7 +78,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         await query.message.delete()
         await bot.send_message(
             query.from_user.id,
-            f"What type of post do you want to download?.",
+            f"Jenis posting apa yang ingin Anda unduh??.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -94,9 +94,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
 
     elif query.data.startswith("photo"):
         if mediacount==0:
-            await query.edit_message_text("There are no posts by the user")
+            await query.edit_message_text("Tidak ada posting oleh pengguna")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take time depending upon number of Posts.")      
+        m= await query.edit_message_text("Mulai Mengunduh..\n mungkin memerlukan waktu tergantung pada jumlah Posting.")      
         dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
@@ -119,9 +119,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
 
     elif query.data.startswith("video"):
         if mediacount==0:
-            await query.edit_message_text("There are no posts by the user")
+            await query.edit_message_text("Tidak ada postingan berdasarkan penggunaanr")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")    
+        m= await query.edit_message_text("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")    
         dir=f"{query.from_user.id}/{username}"
         command = [
             "instaloader",
@@ -144,7 +144,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         await query.message.delete()
         await bot.send_message(
             query.from_user.id,
-            f"Do you Want to download all IGTV posts?\nThere are {igtvcount} posts.",
+            f"Apakah Anda Ingin mengunduh semua posting IGTV??\nAda {igtvcount} Post.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -156,9 +156,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         )
     elif query.data.startswith("yesigtv"):
         if igtvcount==0:
-            await query.edit_message_text("There are no IGTV posts by the user")
+            await query.edit_message_text("Tidak ada postingan IGTV oleh pengguna")
             return
-        m= await query.edit_message_text("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+        m= await query.edit_message_text("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
         dir=f"{query.from_user.id}/{username}"
 
         command = [
@@ -184,9 +184,9 @@ async def cb_handler(bot: Client, query: CallbackQuery):
     elif query.data.startswith("followers"):
         await query.message.delete()
         chat_id=query.from_user.id
-        m=await bot.send_message(chat_id, f"Fetching Followers List of {name}")
+        m=await bot.send_message(chat_id, f"Mengambil Daftar Pengikut {name}")
         f = profile.get_followers()
-        followers=f"**Followers List for {name}**\n\n"
+        followers=f"**Daftar Pengikut untuk {name}**\n\n"
         for p in f:
             followers += f"\n[{p.username}](www.instagram.com/{p.username})"
         try:
@@ -196,7 +196,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             followers=f"**Followers List for {name}**\n\n"
             f = profile.get_followers()
             for p in f:
-                followers += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
+                followers += f"\nName: {p.username} :     Link ke profil:www.instagram.com/{p.username}"
             text_file = open(f"{username}'s followers.txt", "w")
             text_file.write(followers)
             text_file.close()
@@ -210,10 +210,10 @@ async def cb_handler(bot: Client, query: CallbackQuery):
     elif query.data.startswith("followees"):
         await query.message.delete()
         chat_id=query.from_user.id
-        m=await bot.send_message(chat_id, f"Fetching Followees of {name}")
+        m=await bot.send_message(chat_id, f"Mengambil Pengikut dari {name}")
         
         f = profile.get_followees()
-        followees=f"**Followees List for {name}**\n\n"
+        followees=f"**Daftar Pengikut untuk {name}**\n\n"
         for p in f:
             followees += f"\n[{p.username}](www.instagram.com/{p.username})"
         try:
@@ -223,7 +223,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
             followees=f"**Followees List for {name}**\n\n"
             f = profile.get_followees()
             for p in f:
-                followees += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
+                followees += f"\nNama: {p.username} :     Link ke Profil: www.instagram.com/{p.username}"
             text_file = open(f"{username}'s followees.txt", "w")
             text_file.write(followees)
             text_file.close()
@@ -243,7 +243,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
         dir=f"{query.from_user.id}/{username}"
         chat_id=query.from_user.id   
         await query.message.delete()
-        m= await bot.send_message(chat_id, "Starting Downloading..\nThis may take longer time Depending upon number of posts.") 
+        m= await bot.send_message(chat_id, "Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.") 
         cmd, username = query.data.split("#")   
         if cmd == "feed":
             command = [
