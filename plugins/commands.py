@@ -47,7 +47,7 @@ async def start(bot, cmd):
 						InlineKeyboardButton("🤖Bot lain", url="https://t.me/botdimasdoang")
 					],
                     [
-                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to),
+                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
 						InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com)
                     ],
                     [
