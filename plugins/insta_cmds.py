@@ -77,7 +77,7 @@ async def post(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     await bot.send_message(
@@ -113,7 +113,7 @@ async def igtv(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Mengambil IGTV dari <code>@{username}</code>")
@@ -152,7 +152,7 @@ async def followers(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
@@ -197,7 +197,7 @@ async def followees(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
@@ -244,7 +244,7 @@ async def fans(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
@@ -301,7 +301,7 @@ async def nfans(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
@@ -472,7 +472,7 @@ async def tagged(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching the posts in which <code>@{username}</code> is tagged.")
@@ -517,7 +517,7 @@ async def story(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching stories of <code>@{username}</code>")
@@ -598,7 +598,7 @@ async def highlights(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Privasi🔒" and is_followed == "No":
+        if type == "🔒Pribadi🔒" and is_followed == "No":
             await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Mengambil sorotan dari profil <code>@{username}</code>")
