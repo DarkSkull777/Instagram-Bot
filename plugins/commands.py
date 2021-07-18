@@ -48,7 +48,7 @@ async def start(bot, cmd):
 					],
                     [
                         InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
-						InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com)
+						InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
                     ],
                     [
                         InlineKeyboardButton("👨🏼‍🦯Gmn Caranya??", callback_data="help#subin"),
@@ -70,7 +70,7 @@ async def start(bot, cmd):
 						InlineKeyboardButton("🤖Bot lain", url="https://t.me/botdimasdoang"),
 					],
                     [
-                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to)
+                        InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to")
                     ],
                     [
                         InlineKeyboardButton("👨🏼‍🦯Gmn Caranya??", callback_data="help#subin"),
@@ -97,8 +97,8 @@ async def help(bot, cmd):
 					
 				],
 				[
-					InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to),
-					InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com)
+					InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
+					InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
 				]
 			]
 			)
