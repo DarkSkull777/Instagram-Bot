@@ -45,7 +45,7 @@ buttons=InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
-            InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com)
+            InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com")
         ],
         [
             InlineKeyboardButton("👨🏼‍🦯Bagaimana caranya?", callback_data="help#subin"),
