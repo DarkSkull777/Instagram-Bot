@@ -117,7 +117,7 @@ async def stop(bot, cmd):
 						InlineKeyboardButton("🤖Bot lain", url="https://t.me/botdimasdoang")	
 					],
                     [
-                        InlineKeyboardButton("🔗Website", url="https://#MIT License
+                        InlineKeyboardButton("🔗Website", url="https://#MIT License")
 
 #Copyright (c) 2021 subinps
 
