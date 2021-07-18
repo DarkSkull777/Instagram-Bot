@@ -40,16 +40,16 @@ insta = Config.L
 buttons=InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("👨🏼‍💻Developer", url='https://t.me/subinps'),
-            InlineKeyboardButton("🤖Other Bots", url="https://t.me/subin_works/122")
+            InlineKeyboardButton("👨🏼‍💻Creator", url='https://t.me/xskull7'),
+            InlineKeyboardButton("🤖Bot lainnya", url="https://t.me/botdimasdoang")
         ],
         [
-            InlineKeyboardButton("🔗Source Code", url="https://github.com/subinps/Instagram-Bot"),
-            InlineKeyboardButton("🧩Deploy Own Bot", url="https://heroku.com/deploy?template=https://github.com/subinps/Instagram-Bot")
+            InlineKeyboardButton("🔗Website", url="https://darkskull7.my.to"),
+            InlineKeyboardButton("🧩Blog", url="https://darkskull7.blogspot.com)
         ],
         [
-            InlineKeyboardButton("👨🏼‍🦯How To Use?", callback_data="help#subin"),
-            InlineKeyboardButton("⚙️Update Channel", url="https://t.me/subin_works")
+            InlineKeyboardButton("👨🏼‍🦯Bagaimana caranya?", callback_data="help#subin"),
+            InlineKeyboardButton("⚙️ Channel", url="https://t.me/subin_works")
         ]
 					
     ]
@@ -70,19 +70,19 @@ async def post(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     await bot.send_message(
             message.from_user.id,
-            f"What type of post do you want to download?.",
+            f"Jenis posting apa yang ingin Anda unduh??.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -106,21 +106,21 @@ async def igtv(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
-    m=await message.reply_text(f"Fetching IGTV from <code>@{username}</code>")
+    m=await message.reply_text(f"Mengambil IGTV dari <code>@{username}</code>")
     profile = Profile.from_username(insta.context, username)
     igtvcount = profile.igtvcount
     await m.edit(
-        text = f"Do you Want to download all IGTV posts?\nThere are {igtvcount} posts.",
+        text = f"Apakah Anda Ingin mengunduh semua postingan IGTV?\nAda {igtvcount} posts.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -145,29 +145,29 @@ async def followers(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching Followers list of <code>@{username}</code>")
+    m=await message.reply_text(f"Mengambil daftar Pengikut dari <code>@{username}</code>")
     chat_id=message.from_user.id
     f = profile.get_followers()
-    followers=f"**Followers List for {name}**\n\n"
+    followers=f"**Daftar Pengikut untuk {name}**\n\n"
     for p in f:
         followers += f"\n[{p.username}](www.instagram.com/{p.username})"
     try:
         await m.delete()
         await bot.send_message(chat_id=chat_id, text=followers)
     except MessageTooLong:
-        followers=f"**Followers List for {name}**\n\n"
+        followers=f"**Daftar Pengikut untuk {name}**\n\n"
         f = profile.get_followers()
         for p in f:
             followers += f"\nName: {p.username} :     Link to Profile: www.instagram.com/{p.username}"
@@ -190,15 +190,15 @@ async def followees(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
@@ -237,19 +237,19 @@ async def fans(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching list of followees of <code>@{username}</code> who follows <code>@{username}</code>.")
+    m=await message.reply_text(f"Mengambil daftar pengikut dari <code>@{username}</code> who follows <code>@{username}</code>.")
     chat_id=message.from_user.id
     f = profile.get_followers()
     fl = profile.get_followees()
@@ -294,19 +294,19 @@ async def nfans(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     profile = Profile.from_username(insta.context, username)
     name=profile.full_name
-    m=await message.reply_text(f"Fetching list of followees of <code>@{username}</code> who is <b>not</b> following <code>@{username}</code>.")
+    m=await message.reply_text(f"Mengambil daftar pengikut dari <code>@{username}</code> who is <b>not</b> following <code>@{username}</code>.")
     chat_id=message.from_user.id
     f = profile.get_followers()
     fl = profile.get_followees()
@@ -356,12 +356,12 @@ async def feed(bot, message):
     if " " in text:
         cmd, count = text.split(' ')
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     m=await message.reply_text(f"Fetching Posts in Your Feed.")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     if count:
         command = [
             "instaloader",
@@ -409,15 +409,15 @@ async def saved(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     count=None
     if " " in text:
         cmd, count = text.split(' ')
-    m=await message.reply_text(f"Fetching your Saved Posts.")
+    m=await message.reply_text(f"Mengambil Posting Tersimpan Anda.")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     if count:
         command = [
             "instaloader",
@@ -465,20 +465,20 @@ async def tagged(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching the posts in which <code>@{username}</code> is tagged.")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     command = [
         "instaloader",
         "--no-metadata-json",
@@ -510,20 +510,20 @@ async def story(bot, message):
     text=message.text
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     if " " in text:
         cmd, username = text.split(' ')
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
     m=await message.reply_text(f"Fetching stories of <code>@{username}</code>")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     command = [
         "instaloader",
         "--no-metadata-json",
@@ -554,12 +554,12 @@ async def stories(bot, message):
         return
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
-    m=await message.reply_text(f"Fetching stories of all your followees")
+    m=await message.reply_text(f"Mengambil cerita dari semua pengikut Anda")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     command = [
         "instaloader",
         "--no-metadata-json",
@@ -590,7 +590,7 @@ async def highlights(bot, message):
         return
     username=USER
     if 1 not in STATUS:
-        await message.reply_text("You Must Login First /login ")
+        await message.reply_text("Anda Harus Masuk Dulu /login ")
         return
     text=message.text
     if " " in text:
@@ -598,13 +598,13 @@ async def highlights(bot, message):
         profile = Profile.from_username(insta.context, username)
         is_followed = yes_or_no(profile.followed_by_viewer) 
         type = acc_type(profile.is_private)
-        if type == "🔒Private🔒" and is_followed == "No":
-            await message.reply_text("Sorry!\nI can't fetch details from that account.\nSince its a Private account and you are not following <code>@{username}</code>.")
+        if type == "🔒Privasi🔒" and is_followed == "No":
+            await message.reply_text("Maaf!\nSaya tidak dapat mengambil detail dari akun itu.\nKarena ini adalah akun Pribadi dan Anda tidak mengikuti <code>@{username}</code>.")
             return
-    m=await message.reply_text(f"Fetching highlights from profile <code>@{username}</code>")
+    m=await message.reply_text(f"Mengambil sorotan dari profil <code>@{username}</code>")
     chat_id=message.from_user.id
     dir=f"{chat_id}/{username}"
-    await m.edit("Starting Downloading..\nThis may take longer time Depending upon number of posts.")
+    await m.edit("Mulai Mengunduh..\nIni mungkin memakan waktu lebih lama Tergantung pada jumlah posting.")
     command = [
         "instaloader",
         "--no-metadata-json",
